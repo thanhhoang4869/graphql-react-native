@@ -1,7 +1,6 @@
 /**
  * GraphQL with React Native
- * https://studio.apollographql.com/public/countries/variant/current/explorer
- *
+ * API and documents from https://graphqlzero.almansi.me/
  * @format
  */
 
@@ -12,7 +11,7 @@ import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import MainPage from './pages/MainPage';
 
 const client = new ApolloClient({
-  uri: 'https://graphqlzero.almansi.me/api',
+  uri: 'https://graphqlzero.almansi.me/api', //API endpoint
   cache: new InMemoryCache(),
 });
 

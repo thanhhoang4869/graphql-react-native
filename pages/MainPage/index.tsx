@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-  Alert,
-  Button,
-  FlatList,
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Alert, Button, FlatList, StyleSheet, Text, View} from 'react-native';
 
 import {useMutation, useQuery} from '@apollo/client';
-import {CREATE_POST_MUTATION, GET_ALL_POST_QUERY} from '../../gql/query';
 import PostItem from '../../components/PostItem';
+import {CREATE_POST_MUTATION, GET_ALL_POST_QUERY} from '../../gql/query';
 
 const MainPage = () => {
   //Get all post with pagination
@@ -23,13 +14,13 @@ const MainPage = () => {
     },
   };
 
-  const getAllPostResponse = useQuery(GET_ALL_POST_QUERY, {
+  const getAllPostResult = useQuery(GET_ALL_POST_QUERY, {
     variables: {
       options,
     },
   });
 
-  console.log(JSON.stringify(getAllPostResponse.data, null, 2));
+  console.log(JSON.stringify(getAllPostResult.data, null, 2));
 
   //Create new post
   const input = {
@@ -37,7 +28,7 @@ const MainPage = () => {
     body: 'My new post body',
   };
 
-  const [createPost, createPostResponse] = useMutation(CREATE_POST_MUTATION, {
+  const [createPost, createPostResult] = useMutation(CREATE_POST_MUTATION, {
     variables: {
       input,
     },
@@ -48,7 +39,7 @@ const MainPage = () => {
   const onCreatePost = async () => {
     createPost();
 
-    const {loading, error, data} = createPostResponse || {};
+    const {loading, error, data} = createPostResult || {};
 
     if (loading === false && error === undefined && data !== undefined) {
       Alert.alert('Post created');
@@ -75,7 +66,7 @@ const MainPage = () => {
       <Text style={styles.title}>List of Posts</Text>
 
       <FlatList
-        data={getAllPostResponse.data?.posts?.data}
+        data={getAllPostResult.data?.posts?.data}
         renderItem={({item}) => <PostItem post={item} />}
         keyExtractor={item => item.id}
       />
