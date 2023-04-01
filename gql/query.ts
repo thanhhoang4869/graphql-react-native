@@ -10,3 +10,13 @@ export const GET_ALL_POST_QUERY = gql`
     }
   }
 `;
+
+export const CREATE_POST_MUTATION = gql`
+  mutation ($input: CreatePostInput!) {
+    createPost(input: $input) {
+      id
+      title
+      body
+    }
+  }
+`;

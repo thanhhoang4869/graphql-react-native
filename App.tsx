@@ -6,10 +6,10 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import Posts from './components/Posts';
+import MainPage from './pages/MainPage';
 
 const client = new ApolloClient({
   uri: 'https://graphqlzero.almansi.me/api',
@@ -20,9 +20,7 @@ function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
       <View style={styles.container}>
-        <Text style={styles.title}>List of Posts</Text>
-
-        <Posts />
+        <MainPage />
       </View>
     </ApolloProvider>
   );
@@ -33,12 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     padding: 20,
-  },
-  title: {
-    fontSize: 25,
-    color: 'black',
-    fontWeight: 'bold',
-    marginBottom: 20,
   },
 });
 
