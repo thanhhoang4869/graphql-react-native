@@ -9,10 +9,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import Continents from './components/Continents';
+import Posts from './components/Posts';
 
 const client = new ApolloClient({
-  uri: 'https://countries.trevorblades.com/graphql',
+  uri: 'https://graphqlzero.almansi.me/api',
   cache: new InMemoryCache(),
 });
 
@@ -20,9 +20,9 @@ function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
       <View style={styles.container}>
-        <Text style={styles.title}>Continents with GraphQL</Text>
+        <Text style={styles.title}>List of Posts</Text>
 
-        <Continents />
+        <Posts />
       </View>
     </ApolloProvider>
   );

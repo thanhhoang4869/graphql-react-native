@@ -1,18 +1,19 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-export type ContinentItemsProp = {
-  continent: {
-    code: string;
-    name: string;
+export type PostItemsProp = {
+  post: {
+    id: string;
+    title: string;
   };
 };
 
-const ContinentItems = ({continent}: ContinentItemsProp) => {
+const PostItems = ({post}: PostItemsProp) => {
   return (
     <Pressable>
       <View style={styles.item}>
-        <Text style={styles.name}>{continent.name}</Text>
+        <Text style={styles.id}>ID: {post.id}</Text>
+        <Text style={styles.title}>Post title: {post.title}</Text>
       </View>
     </Pressable>
   );
@@ -24,10 +25,15 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
   },
-  name: {
+  id: {
     fontSize: 20,
+    color: 'black',
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: 'bold',
     color: 'black',
   },
 });
 
-export default ContinentItems;
+export default PostItems;

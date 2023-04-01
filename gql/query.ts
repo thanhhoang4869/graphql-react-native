@@ -1,10 +1,12 @@
 import {gql} from '@apollo/client';
 
-export const CONTINENT_QUERY = gql`
-  query ContinentQuery {
-    continents {
-      code
-      name
+export const GET_ALL_POST_QUERY = gql`
+  query ($options: PageQueryOptions) {
+    posts(options: $options) {
+      data {
+        id
+        title
+      }
     }
   }
 `;
